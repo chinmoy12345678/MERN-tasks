@@ -1,0 +1,45 @@
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Image Animation</title>
+  <style>
+    #myImage {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <img id="myImage" src="train1.png" alt="Animated Image" width="200" height="200">
+  <br>
+  <button onclick="startAnimation()">Start</button>
+  <button onclick="stopAnimation()">Stop</button>
+
+  <script>
+    var intervalId; 
+
+    function startAnimation() {
+      var image = document.getElementById("myImage");
+      var position = 0;
+      var speed = 5;
+
+      intervalId = setInterval(frame, 10);
+
+      function frame() {
+        if (position >= window.innerWidth - image.width) {
+        
+          position = 0;
+        } else {
+        
+          position += speed;
+          image.style.left = position + "px";
+        }
+      }
+    }
+
+    function stopAnimation() {
+      clearInterval(intervalId); 
+    }
+  </script>
+</body>
+</html>
+
